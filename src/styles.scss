@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --color-green: #04D361;
+  --color-purple: #8257E5;
+  --color-purple-dark: #6F48C9;
+  --color-purple-light: #9F75FF;
+
+  --color-heading: #494D4B;
+  --color-body: #808080;
+  --color-body-2: #AFB2B1;
+  --color-body-3: #FFFFFF;
+
+  --color-line: #E6E8EB;
+  --color-shape: #F7F8FA;
+  --color-background: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-body);
+  background-color: var(--color-shape);
+}
+
+.button-play {
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-line);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-line);
+    border: 2px solid var(--color-line);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: var(--color-purple-dark);
+  }
+}
