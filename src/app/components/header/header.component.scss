@@ -17,7 +17,7 @@ header {
       height: 40px;
     }
 
-    span{
+    span {
       height: 24px;
       background-color: var(--color-line);
       display: flex;
@@ -30,5 +30,11 @@ header {
       font-weight: 400;
       color: var(--color-body);
     }
+  }
+
+  .header__data {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-body);
   }
 }

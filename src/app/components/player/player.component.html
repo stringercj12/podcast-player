@@ -1,36 +1,104 @@
-<div>
-  <img src="headphone.svg" alt="Head Phone">
-  Tocando agora
+<div class="player__logo">
+  <img src="/assets/headphone.svg" alt="Head Phone">
+  <span class="player__logo_text">
+    Tocando agora
+  </span>
 </div>
 
 <div class="player">
-  <img src="" alt="" class="podcast-capa" />
-  <div class="podcast-name">O que é um bom código?</div>
-  <div class="author">Diego e Richard</div>
-
-  <div class="podcast-timer">
-    <div class="current-time">0:00</div>
-    <div class="progress-bar">
-      <div class="progress"></div>
+  <div class="podcast-capa__container" [class.player__podcast-active]="podcastActive">
+    @if(podcastActive){
+    <img [src]="capa" alt="" class="podcast-capa__image" />
+    }@else{
+    <div class="podcast-capa__text">
+      Selecione um
+      podcast para ouvir
     </div>
-    <div class="total-time">1:35:18</div>
+    }
   </div>
+  @if(podcastActive){
+  <div class="podcast-title">O que é um bom código?</div>
+  <div class="podcast-author">Diego e Richard</div>
+  }
+</div>
 
-  <div class="podcast__buttons">
-    <button class="button-aleatory">
-      <img src="/assets/skip_previous.svg" alt="" />
-    </button>
-    <button class="button-prev">
-      <img src="/assets/skip_previous.svg" alt="" />
-    </button>
-    <button class="button-play">
-      <img src="/assets/play_arrow.svg" alt="" />
-    </button>
-    <button class="button-next">
-      <img src="/assets/skip_next.svg" alt="" />
-    </button>
-    <button class="button-repeat">
-      <img src="/assets/skip_next.svg" alt="" />
-    </button>
+<div class="player-timer" [class.player__podcast-active]="!podcastActive">
+  <div class="current-time">{{countTimerPodcast}}</div>
+  <div class="progress-bar">
+    <div class="progress-bar__fill" [style.width]="`${countTimerPodcast}%`"></div>
   </div>
+  <div class="total-time">1:35:18</div>
+</div>
+
+<div class="player-controls" [class.player__podcast-active]="!podcastActive">
+  <button class="button-aleatory">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M3 17.9793L5.384 17.9913C6.393 17.9963 7.336 17.4943 7.896 16.6553L14.105 7.34126C14.663 6.50326 15.605 6.00226 16.612 6.00526L21 6.02126"
+        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M19 19.9792L21 17.9792L19 15.9792" stroke="white" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+      <path d="M8.893 8.62522L7.904 7.25322C7.337 6.46722 6.425 6.00322 5.455 6.00822L3 6.02122" stroke="white"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M12.969 15.3752L14.095 16.8312C14.665 17.5682 15.546 17.9982 16.478 17.9952L21 17.9792" stroke="white"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M19 8.02124L21 6.02124L19 4.02124" stroke="white" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </button>
+  <button class="button-prev">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.4759 19.0623C18.1422 19.4724 19 18.993 19 18.2107L19 5.78981C19 5.00749 18.1422 4.52814 17.4759 4.93815L6 12.0002L17.4759 19.0623Z"
+        fill="white" />
+      <rect x="7" y="20.0002" width="2" height="16" rx="1" transform="rotate(180 7 20.0002)" fill="white" />
+    </svg>
+  </button>
+  <button class="button-play player__play" [class.player__play-active]="podcastActive" (click)="play()">
+    @if(podcastActive){
+    <svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M1.5 0C0.671573 0 0 0.671573 0 1.5V17.5C0 18.3284 0.671573 19 1.5 19C2.32843 19 3 18.3284 3 17.5V1.5C3 0.671573 2.32843 0 1.5 0ZM9.5 0C8.67157 0 8 0.671573 8 1.5V17.5C8 18.3284 8.67157 19 9.5 19C10.3284 19 11 18.3284 11 17.5V1.5C11 0.671573 10.3284 0 9.5 0Z"
+        fill="white" />
+    </svg>
+    }@else{
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_196605_513)">
+        <path
+          d="M12.2035 7.6447C11.5378 7.22106 10.6666 7.69927 10.6666 8.48836V23.5117C10.6666 24.3008 11.5378 24.779 12.2035 24.3553L24.0075 16.8437C24.625 16.4507 24.625 15.5493 24.0075 15.1564L12.2035 7.6447Z"
+          fill="white" />
+      </g>
+      <defs>
+        <clipPath id="clip0_196605_513">
+          <rect width="32" height="32" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+    }
+  </button>
+  <button class="button-next">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_196554_147)">
+        <path
+          d="M6.5241 4.93815C5.85783 4.52814 5 5.00749 5 5.78981V18.2107C5 18.993 5.85783 19.4724 6.5241 19.0623L16.6161 12.8519C17.2506 12.4614 17.2506 11.5391 16.6161 11.1486L6.5241 4.93815Z"
+          fill="white" />
+        <rect x="17" y="4.00024" width="2" height="16" rx="1" fill="white" />
+      </g>
+      <defs>
+        <clipPath id="clip0_196554_147">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  </button>
+  <button class="button-repeat">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14 4.00024L16 6.00524L8.849 5.98424C5.632 5.98424 3 8.62324 3 11.8482V11.8482C3 13.4612 3.658 14.9272 4.718 15.9892"
+        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path
+        d="M10 20.0002L8 17.9952L15.151 18.0162C18.368 18.0162 21 15.3772 21 12.1522V12.1522C21 10.5392 20.342 9.07323 19.282 8.01123"
+        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
 </div>
