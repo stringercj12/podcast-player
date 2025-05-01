@@ -1,4 +1,4 @@
-<main>
+<main [style.grid-template-columns]="isTogglePlayer() ? '1fr': '1fr 434px'">
   <div>
     <app-header />
     <section>
@@ -71,9 +71,28 @@
             </td>
           </tr>
           }
+          <tr>
+            <td>
+              <div class="podcast">
+                <img class="podcast-capa"
+                  src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Imagem do álbum" />
+
+                <div class="podcast-name">O que é um bom código esse e o final?</div>
+              </div>
+            </td>
+            <td>Diego e Richard</td>
+            <td>8 Jan 21</td>
+            <td>1:35:18</td>
+            <td>
+              <button class="button-play">
+                <img src="/assets/play_arrow.svg" alt="" />
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </section>
   </div>
-  <app-player />
+  <app-player (isTogglePlayerEvent)="isTogglePlayer.set($event)" />
 </main>

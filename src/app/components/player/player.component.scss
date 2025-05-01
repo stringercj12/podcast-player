@@ -12,6 +12,74 @@
   right: 0;
   padding: 36px 64px 48px 64px;
 
+  &.bottom {
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    transition: all 0.3s ease-in-out;
+    flex-direction: row;
+    gap: 24px;
+    padding: 48px 64px;
+
+    .player-minimize{
+      top: 35px;
+    }
+
+    .player__logo {
+      display: none;
+    }
+
+    .player {
+      .podcast-capa__container {
+        height: 60px;
+        width: 60px;
+        border-radius: 10px;
+
+        .podcast-capa__image{
+          border-radius: 10px;
+        }
+
+        .podcast-capa__text {
+          display: none;
+        }
+      }
+    }
+
+    .podcast-author,
+    .podcast-title {
+      display: none;
+    }
+
+
+    .player-controls {
+      button {
+        height: 54px;
+        width: 54px;
+        border-radius: 14px;
+      }
+    }
+
+  }
+
+  .player-minimize {
+    background-color: transparent;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--color-body-3);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--color-purple-light);
+    }
+  }
+
   .player__logo {
     display: flex;
     align-items: center;
@@ -92,7 +160,7 @@
       opacity: 0.4;
 
       .progress-bar__fill {
-        background-color: var(--color-purple-light) !important; 
+        background-color: var(--color-purple-light) !important;
 
         &::after {
           display: none;
@@ -143,7 +211,7 @@
     gap: 4px;
 
     &.player__podcast-active {
-      opacity: 0.4;
+      opacity: 0.5;
     }
 
     button {
@@ -156,20 +224,19 @@
       height: 64px;
       width: 64px;
       border-radius: 16px;
+      color: var(--color-background);
+
+      lucide-angular {
+        display: flex;
+      }
 
       &.player__play {
         background-color: var(--color-purple-light);
-        color: var(--color-purple-dark);
       }
 
-      &.player__play-active {
-        background-color: var(--color-purple-dark);
-        color: var(--color-purple-dark);
-      }
-
+      &.player__play-active,
       &:hover {
         background-color: var(--color-purple-dark);
-        color: var(--color-purple-light);
       }
     }
   }

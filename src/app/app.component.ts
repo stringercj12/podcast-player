@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { PlayerComponent } from "./components/player/player.component";
@@ -11,4 +11,6 @@ import { PlayerComponent } from "./components/player/player.component";
 })
 export class AppComponent {
   title = 'podcast-player';
+
+  isTogglePlayer = signal(false);
 }
